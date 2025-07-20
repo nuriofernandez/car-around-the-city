@@ -20,7 +20,7 @@ func Render() {
 
 	rl.EndMode3D()
 
-	cords := fmt.Sprintf("[%d,%d,%d]", int(camera.Position.X), int(camera.Position.Y), int(camera.Position.Z))
+	cords := fmt.Sprintf("[%d,%d,%d]", int(carPosition.X), int(carPosition.Y), int(carPosition.Z))
 	rl.DrawText(cords, 10, 10, 20, rl.DarkGray)
 
 	rl.EndDrawing()
