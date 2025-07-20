@@ -9,7 +9,7 @@ const (
 	MAX_SPEED_REVERSE = -0.3
 )
 
-var carPosition = rl.NewVector3(0, 0, 0)
+var carPosition = rl.NewVector3(-9.45, -1, 0)
 
 var acceleration = float32(0.1)
 
