@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	rl.InitWindow(settings.ScreenWidth, settings.ScreenHeight, "Simple 3D Game in Go")
+	rl.InitWindow(settings.ScreenWidth, settings.ScreenHeight, "Car around the city")
 	defer rl.CloseWindow()
 	rl.SetTraceLogLevel(rl.LogAll)
 
