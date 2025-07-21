@@ -27,5 +27,7 @@ func Render() {
 	cords := fmt.Sprintf("[%d,%d,%d]", int(carPosition.X), int(carPosition.Y), int(carPosition.Z))
 	rl.DrawText(cords, 10, 10, 20, rl.Black)
 
+	rl.DrawText(vehicle.GetDebug(), 10, 40, 25, rl.Blue)
+
 	rl.EndDrawing()
 }

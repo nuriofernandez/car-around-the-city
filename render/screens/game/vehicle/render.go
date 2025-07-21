@@ -6,7 +6,6 @@ import (
 )
 
 func PreRender() {
-	HandleDirection()
 	EngineSim()
 	CarWheels()
 }
@@ -25,6 +24,8 @@ func Render() {
 	rl.DrawModel(passengerBackWheelModel, rl.Vector3Add(carPosition, rotateOffsetY(passengerBackOffset, carYaw)), 1, rl.White)
 	rl.DrawModel(driverFrontWheelModel, rl.Vector3Add(carPosition, rotateOffsetY(driverFrontOffset, carYaw)), 1, rl.White)
 	rl.DrawModel(passengerFrontWheelModel, rl.Vector3Add(carPosition, rotateOffsetY(passengerFrontOffset, carYaw)), 1, rl.White)
+
+	HandleDirection()
 }
 
 func rotateOffsetY(offset rl.Vector3, yaw float32) rl.Vector3 {

@@ -1,6 +1,9 @@
 package vehicle
 
-import rl "github.com/gen2brain/raylib-go/raylib"
+import (
+	"fmt"
+	rl "github.com/gen2brain/raylib-go/raylib"
+)
 
 const (
 	MAX_SPEED_FORWARD = 0.65
@@ -13,6 +16,10 @@ var steering = float32(0)
 
 func GetCarPos() rl.Vector3 {
 	return carPosition
+}
+
+func GetDebug() string {
+	return fmt.Sprintf("A: %.1f | S: %.2f", acceleration, steering)
 }
 
 func Accelerate(speed float32) {
