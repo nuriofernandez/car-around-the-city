@@ -8,8 +8,7 @@ import (
 
 func Render() {
 	Movement()
-	vehicle.CarWheels()
-	vehicle.EngineSim()
+	vehicle.PreRender()
 
 	CameraController()
 
