@@ -1,6 +1,10 @@
-package game
+package vehicle
 
-import rl "github.com/gen2brain/raylib-go/raylib"
+import (
+	rl "github.com/gen2brain/raylib-go/raylib"
+)
+
+var wheelsRotation = float32(0)
 
 func CarWheels() {
 	driverBack()
