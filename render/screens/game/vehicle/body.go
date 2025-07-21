@@ -49,7 +49,7 @@ func steerDirection() {
 		reduceSteering(1)
 	}
 
-	reduceAcceleration(0.003)
+	reduceAcceleration(0.001)
 }
 
 func smoothStep(x, edge0, edge1 float64) float64 {
