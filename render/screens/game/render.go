@@ -3,14 +3,11 @@ package game
 import (
 	"fmt"
 	rl "github.com/gen2brain/raylib-go/raylib"
-	"time"
 )
-
-var rotation float32 = 1
-var start time.Time = time.Now()
 
 func Render() {
 	Movement()
+	CarWheels()
 
 	CameraController()
 
@@ -24,12 +21,11 @@ func Render() {
 	// Car
 	rl.DrawModel(carModel, carPosition, 1.0, rl.White)
 
-	// Car wheels
-	rl.DrawModelEx(driverWheelModel, rl.NewVector3(carPosition.X+0.954046, carPosition.Y+0.042085, carPosition.Z+1.60227), rl.Vector3{1, 0, 0}, wheelsRotation, rl.Vector3{1, 1, 1}, rl.White) // driver front
-	rl.DrawModelEx(driverWheelModel, rl.NewVector3(carPosition.X+0.963129, carPosition.Y+0.042085, carPosition.Z-1.73766), rl.Vector3{1, 0, 0}, wheelsRotation, rl.Vector3{1, 1, 1}, rl.White) // driver back
-
-	rl.DrawModelEx(passengerWheelModel, rl.NewVector3(carPosition.X-0.96147, carPosition.Y+0.042085, carPosition.Z+1.61003), rl.Vector3{1, 0, 0}, wheelsRotation, rl.Vector3{1, 1, 1}, rl.White)  // passenger front
-	rl.DrawModelEx(passengerWheelModel, rl.NewVector3(carPosition.X-0.963425, carPosition.Y+0.042085, carPosition.Z-1.73766), rl.Vector3{1, 0, 0}, wheelsRotation, rl.Vector3{1, 1, 1}, rl.White) // passenger back
+	// Car back wheels
+	rl.DrawModel(driverBackWheelModel, rl.NewVector3(carPosition.X+0.963129, carPosition.Y+0.042085, carPosition.Z-1.73766), 1, rl.White)    // driver back
+	rl.DrawModel(passengerBackWheelModel, rl.NewVector3(carPosition.X-0.963425, carPosition.Y+0.042085, carPosition.Z-1.73766), 1, rl.White) // passenger back
+	rl.DrawModel(driverFrontWheelModel, rl.NewVector3(carPosition.X+0.954046, carPosition.Y+0.042085, carPosition.Z+1.60227), 1, rl.White)   // driver front
+	rl.DrawModel(passengerFrontWheelModel, rl.NewVector3(carPosition.X-0.96147, carPosition.Y+0.042085, carPosition.Z+1.61003), 1, rl.White) // passenger front
 
 	rl.EndMode3D()
 
