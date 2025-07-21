@@ -16,6 +16,8 @@ var carPosition = rl.NewVector3(-9.45, -1, 0)
 
 var acceleration = float32(0.1)
 
+var steering = float32(0)
+
 func Movement() {
 	EngineSim()
 	if rl.IsKeyDown(rl.KeyW) {
@@ -37,6 +39,14 @@ func Movement() {
 			acceleration = MaxSpeed(acceleration - 0.03)
 		}
 	}
+
+	if rl.IsKeyDown(rl.KeyA) {
+		steering = MaxSteering(steering - 2)
+	}
+
+	if rl.IsKeyDown(rl.KeyD) {
+		steering = MaxSteering(steering + 2)
+	}
 }
 
 func EngineSim() {
@@ -52,4 +62,14 @@ func MaxSpeed(speed float32) float32 {
 		return MAX_SPEED_REVERSE
 	}
 	return speed
+}
+
+func MaxSteering(angle float32) float32 {
+	if angle > 28 {
+		return 28
+	}
+	if angle < -28 {
+		return -28
+	}
+	return angle
 }

@@ -31,7 +31,7 @@ func driverFront() {
 	var (
 		pitch = float32(-wheelsRotation)
 		roll  = float32(0)
-		yaw   = float32(28) // Max 28
+		yaw   = float32(steering) // Max 28
 	)
 
 	rotation := rl.Vector3{
@@ -63,7 +63,7 @@ func passengerFront() {
 	var (
 		pitch = float32(-wheelsRotation)
 		roll  = float32(-180)
-		yaw   = float32(-180) + -28 // Max -28
+		yaw   = float32(-180) + -steering // Max -28
 	)
 
 	rotation := rl.Vector3{
