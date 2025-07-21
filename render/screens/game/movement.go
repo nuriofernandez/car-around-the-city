@@ -7,7 +7,7 @@ import (
 
 func Movement() {
 	if rl.IsKeyDown(rl.KeyW) {
-		vehicle.Accelerate(0.02)
+		vehicle.Accelerate(0.015)
 	}
 
 	if rl.IsKeyDown(rl.KeyS) {

@@ -3,7 +3,7 @@ package vehicle
 import rl "github.com/gen2brain/raylib-go/raylib"
 
 const (
-	MAX_SPEED_FORWARD = 0.7
+	MAX_SPEED_FORWARD = 0.65
 	MAX_SPEED_REVERSE = -0.3
 )
 
@@ -24,10 +24,10 @@ func Break() {
 		acceleration = 0
 	}
 	if acceleration < -0.1 { // REVERSE
-		acceleration = MaxSpeed(acceleration + 0.03)
+		acceleration = MaxSpeed(acceleration + 0.02)
 	}
 	if acceleration > 0.1 { // FORWARD
-		acceleration = MaxSpeed(acceleration - 0.03)
+		acceleration = MaxSpeed(acceleration - 0.02)
 	}
 }
 
