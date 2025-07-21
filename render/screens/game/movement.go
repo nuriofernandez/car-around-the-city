@@ -2,12 +2,15 @@ package game
 
 import (
 	rl "github.com/gen2brain/raylib-go/raylib"
+	"math"
 )
 
 const (
 	MAX_SPEED_FORWARD = 0.7
 	MAX_SPEED_REVERSE = -0.3
 )
+
+var wheelsRotation = float32(0)
 
 var carPosition = rl.NewVector3(-9.45, -1, 0)
 
@@ -37,9 +40,7 @@ func Movement() {
 }
 
 func EngineSim() {
-	if acceleration == 0 {
-		return
-	}
+	wheelsRotation = float32(math.Mod(float64(wheelsRotation+(acceleration*40)), 360.0))
 	carPosition.Z += acceleration
 }
 
