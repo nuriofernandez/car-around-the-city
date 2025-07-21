@@ -17,4 +17,14 @@ func EngineSim() {
 	// Apply acceleration in facing direction
 	carPosition.Z -= dx * acceleration
 	carPosition.X -= dz * acceleration
+
+	reduceAcceleration(0.002)
+}
+
+func reduceAcceleration(reduction float32) {
+	if acceleration > 0 {
+		acceleration = float32(math.Max(float64(acceleration-reduction), 0))
+	} else {
+		acceleration = float32(math.Min(float64(acceleration+reduction), 0))
+	}
 }

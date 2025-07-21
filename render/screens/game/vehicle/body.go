@@ -2,7 +2,6 @@ package vehicle
 
 import (
 	rl "github.com/gen2brain/raylib-go/raylib"
-	"math"
 )
 
 var (
@@ -37,7 +36,6 @@ func steerDirection() {
 			carYaw -= (-steering / 28) * 2
 			steering++
 		}
-		acceleration = float32(math.Max(float64(acceleration-0.003), 0))
 	}
 
 	// backwards
@@ -50,7 +48,7 @@ func steerDirection() {
 			carYaw += (-steering / 28) * 2
 			steering++
 		}
-		acceleration = float32(math.Min(float64(acceleration+0.003), 0))
 	}
 
+	reduceAcceleration(0.003)
 }
