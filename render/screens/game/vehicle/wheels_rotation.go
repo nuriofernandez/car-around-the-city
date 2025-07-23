@@ -7,7 +7,7 @@ import (
 
 var wheelsRotation = float32(0)
 
-func CarWheels() {
+func calculateCarWheelsRotation() {
 	driverBack()
 	driverFront()
 

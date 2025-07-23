@@ -38,7 +38,7 @@ func calculateBodyRotation() {
 		if driver.Steering < 0 {
 			carYaw -= (-driver.Steering / 28) * yawMultiplierByAcceleration()
 		}
-		reduceSteering(1)
+		driver.ReduceSteering(1)
 	}
 
 	// backwards
@@ -49,7 +49,7 @@ func calculateBodyRotation() {
 		if driver.Steering < 0 {
 			carYaw += (-driver.Steering / 28) * yawMultiplierByAcceleration()
 		}
-		reduceSteering(1)
+		driver.ReduceSteering(1)
 	}
 
 	reduceAcceleration(0.001)
@@ -82,12 +82,4 @@ func yawMultiplierByAcceleration() float32 {
 
 	// otherwise, driver.Acceleration is 0
 	return 0
-}
-
-func reduceSteering(reduction float32) {
-	if driver.Steering > 0 {
-		driver.Steering = float32(math.Max(float64(driver.Steering-reduction), 0))
-	} else {
-		driver.Steering = float32(math.Min(float64(driver.Steering+reduction), 0))
-	}
 }
