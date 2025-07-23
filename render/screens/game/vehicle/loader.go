@@ -1,17 +1,11 @@
 package vehicle
 
-import rl "github.com/gen2brain/raylib-go/raylib"
+import (
+	"github.com/nuriofernandez/car-around-the-city/render/screens/game/models/vehicle"
+)
 
-var carModel rl.Model
-var driverFrontWheelModel rl.Model
-var driverBackWheelModel rl.Model
-var passengerFrontWheelModel rl.Model
-var passengerBackWheelModel rl.Model
+var PedVehicle vehicle.Vehicle
 
 func Load() {
-	carModel = rl.LoadModel("resources/car.glb")
-	driverFrontWheelModel = rl.LoadModel("resources/wheel.glb")
-	driverBackWheelModel = rl.LoadModel("resources/wheel.glb")
-	passengerFrontWheelModel = rl.LoadModel("resources/passenger-wheel.glb")
-	passengerBackWheelModel = rl.LoadModel("resources/passenger-wheel.glb")
+	PedVehicle = vehicle.NewVehicle(-9.45, -1, 2)
 }

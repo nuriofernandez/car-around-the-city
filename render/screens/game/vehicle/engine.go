@@ -7,17 +7,15 @@ import (
 )
 
 func EngineSim() {
-	wheelsRotation = float32(math.Mod(float64(wheelsRotation+(driver.Acceleration*40)), 360.0))
-
-	yawRadians := float64((180 - carYaw) * rl.Deg2rad)
+	yawRadians := float64((180 - PedVehicle.Body.Position.Rotation.Yaw) * rl.Deg2rad)
 
 	// Compute direction vector based on yaw
 	dx := float32(math.Cos(yawRadians))
 	dz := float32(math.Sin(yawRadians))
 
 	// Apply acceleration in facing direction
-	carPosition.Z -= dx * driver.Acceleration
-	carPosition.X -= dz * driver.Acceleration
+	PedVehicle.Body.Position.Location.Z -= dx * PedVehicle.Acceleration
+	PedVehicle.Body.Position.Location.X -= dz * PedVehicle.Acceleration
 
 	reduceAcceleration(0.002)
 }

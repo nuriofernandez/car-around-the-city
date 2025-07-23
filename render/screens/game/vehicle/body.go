@@ -1,31 +1,11 @@
 package vehicle
 
 import (
-	rl "github.com/gen2brain/raylib-go/raylib"
 	"github.com/nuriofernandez/car-around-the-city/render/screens/game/driver"
 	"math"
 )
 
-var (
-	pitch  = float32(0)
-	roll   = float32(0)
-	carYaw = float32(0)
-)
-
 func HandleDirection() {
-	// Calculate next vehicle location properties
-	calculateBodyRotation()
-
-	// Update vehicle location
-	rotation := rl.Vector3{
-		X: rl.Deg2rad * pitch,
-		Y: rl.Deg2rad * carYaw,
-		Z: rl.Deg2rad * roll,
-	}
-	carModel.Transform = rl.MatrixRotateXYZ(rotation)
-}
-
-func calculateBodyRotation() {
 	if driver.Acceleration == 0 || driver.Steering == 0 {
 		return
 	}
@@ -33,10 +13,10 @@ func calculateBodyRotation() {
 	// forward
 	if driver.Acceleration > 0 {
 		if driver.Steering > 0 {
-			carYaw += (driver.Steering / 28) * yawMultiplierByAcceleration()
+			PedVehicle.Body.Position.Rotation.Yaw += (driver.Steering / 28) * yawMultiplierByAcceleration()
 		}
 		if driver.Steering < 0 {
-			carYaw -= (-driver.Steering / 28) * yawMultiplierByAcceleration()
+			PedVehicle.Body.Position.Rotation.Yaw -= (-driver.Steering / 28) * yawMultiplierByAcceleration()
 		}
 		driver.ReduceSteering(1)
 	}
@@ -44,10 +24,10 @@ func calculateBodyRotation() {
 	// backwards
 	if driver.Acceleration < 0 {
 		if driver.Steering > 0 {
-			carYaw -= (driver.Steering / 28) * yawMultiplierByAcceleration()
+			PedVehicle.Body.Position.Rotation.Yaw -= (driver.Steering / 28) * yawMultiplierByAcceleration()
 		}
 		if driver.Steering < 0 {
-			carYaw += (-driver.Steering / 28) * yawMultiplierByAcceleration()
+			PedVehicle.Body.Position.Rotation.Yaw += (-driver.Steering / 28) * yawMultiplierByAcceleration()
 		}
 		driver.ReduceSteering(1)
 	}
