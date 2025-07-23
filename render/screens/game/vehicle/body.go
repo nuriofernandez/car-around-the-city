@@ -12,17 +12,19 @@ var (
 )
 
 func HandleDirection() {
+	// Calculate next vehicle location properties
+	calculateBodyRotation()
+
+	// Update vehicle location
 	rotation := rl.Vector3{
 		X: rl.Deg2rad * pitch,
 		Y: rl.Deg2rad * carYaw,
 		Z: rl.Deg2rad * roll,
 	}
 	carModel.Transform = rl.MatrixRotateXYZ(rotation)
-
-	steerDirection()
 }
 
-func steerDirection() {
+func calculateBodyRotation() {
 	if acceleration == 0 || steering == 0 {
 		return
 	}
