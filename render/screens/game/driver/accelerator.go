@@ -12,14 +12,14 @@ func Accelerate(speed float32) {
 }
 
 func Break() {
-	if Acceleration < 0.1 && Acceleration > -0.1 {
+	if Acceleration < 0.05 && Acceleration > -0.05 {
 		Acceleration = 0
 	}
-	if Acceleration < -0.1 { // REVERSE
-		Acceleration = maxSpeed(Acceleration + 0.02)
+	if Acceleration < -0.05 { // REVERSE
+		Acceleration = maxSpeed(Acceleration + 0.01)
 	}
-	if Acceleration > 0.1 { // FORWARD
-		Acceleration = maxSpeed(Acceleration - 0.02)
+	if Acceleration > 0.05 { // FORWARD
+		Acceleration = maxSpeed(Acceleration - 0.01)
 	}
 }
 
