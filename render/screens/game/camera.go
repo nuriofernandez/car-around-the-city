@@ -8,7 +8,7 @@ import (
 
 var camera = rl.Camera{
 	Position:   rl.NewVector3(vehicle.GetCarPos().X+5, vehicle.GetCarPos().Y+10.0, vehicle.GetCarPos().Z+5.0),
-	Target:     vehicle.GetCarPos(),
+	Target:     *vehicle.GetCarPos(),
 	Up:         rl.NewVector3(0.0, 1.0, 0.0),
 	Fovy:       45.0,
 	Projection: rl.CameraPerspective,
@@ -25,8 +25,7 @@ var (
 
 func CameraController() {
 	HandleCameraRotation()
-	camera.Target = vehicle.GetCarPos()
-
+	camera.Target = *vehicle.GetCarPos()
 }
 
 func HandleCameraRotation() {

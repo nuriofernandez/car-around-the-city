@@ -9,7 +9,8 @@ import (
 func Render() {
 	Movement()
 	vehicle.PreRender()
-
+	Elevation()
+	
 	CameraController()
 
 	rl.BeginDrawing()

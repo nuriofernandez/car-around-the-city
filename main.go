@@ -8,6 +8,7 @@ import (
 )
 
 func main() {
+
 	rl.InitWindow(settings.ScreenWidth, settings.ScreenHeight, "Car around the city")
 	defer rl.CloseWindow()
 	rl.SetTraceLogLevel(rl.LogAll)

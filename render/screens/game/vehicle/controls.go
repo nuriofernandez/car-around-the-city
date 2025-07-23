@@ -14,8 +14,8 @@ var carPosition = rl.NewVector3(-9.45, -1, 0)
 var acceleration = float32(0)
 var steering = float32(0)
 
-func GetCarPos() rl.Vector3 {
-	return carPosition
+func GetCarPos() *rl.Vector3 {
+	return &carPosition
 }
 
 func GetDebug() string {
