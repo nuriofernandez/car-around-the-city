@@ -2,6 +2,7 @@ package vehicle
 
 import (
 	rl "github.com/gen2brain/raylib-go/raylib"
+	"github.com/nuriofernandez/car-around-the-city/render/screens/game/driver"
 	"math"
 )
 
@@ -25,28 +26,28 @@ func HandleDirection() {
 }
 
 func calculateBodyRotation() {
-	if acceleration == 0 || steering == 0 {
+	if driver.Acceleration == 0 || driver.Steering == 0 {
 		return
 	}
 
 	// forward
-	if acceleration > 0 {
-		if steering > 0 {
-			carYaw += (steering / 28) * yawMultiplierByAcceleration()
+	if driver.Acceleration > 0 {
+		if driver.Steering > 0 {
+			carYaw += (driver.Steering / 28) * yawMultiplierByAcceleration()
 		}
-		if steering < 0 {
-			carYaw -= (-steering / 28) * yawMultiplierByAcceleration()
+		if driver.Steering < 0 {
+			carYaw -= (-driver.Steering / 28) * yawMultiplierByAcceleration()
 		}
 		reduceSteering(1)
 	}
 
 	// backwards
-	if acceleration < 0 {
-		if steering > 0 {
-			carYaw -= (steering / 28) * yawMultiplierByAcceleration()
+	if driver.Acceleration < 0 {
+		if driver.Steering > 0 {
+			carYaw -= (driver.Steering / 28) * yawMultiplierByAcceleration()
 		}
-		if steering < 0 {
-			carYaw += (-steering / 28) * yawMultiplierByAcceleration()
+		if driver.Steering < 0 {
+			carYaw += (-driver.Steering / 28) * yawMultiplierByAcceleration()
 		}
 		reduceSteering(1)
 	}
@@ -62,31 +63,31 @@ func smoothStep(x, edge0, edge1 float64) float64 {
 
 func yawMultiplierByAcceleration() float32 {
 	// forward
-	if acceleration > 0 {
-		value1 := smoothStep(float64(acceleration), 0, 0.15)
-		value2 := smoothStep(float64(acceleration), 0.16, 0.5)
+	if driver.Acceleration > 0 {
+		value1 := smoothStep(float64(driver.Acceleration), 0, 0.15)
+		value2 := smoothStep(float64(driver.Acceleration), 0.16, 0.5)
 
 		// Blend values smoothly
 		return float32((1-value1)*0.2 + value1*((1-value2)*1.5+value2*2.0))
 	}
 
 	//backwards
-	if acceleration < 0 {
-		value1 := smoothStep(float64(acceleration), 0, -0.15)
-		value2 := smoothStep(float64(acceleration), -0.16, -0.5)
+	if driver.Acceleration < 0 {
+		value1 := smoothStep(float64(driver.Acceleration), 0, -0.15)
+		value2 := smoothStep(float64(driver.Acceleration), -0.16, -0.5)
 
 		// Blend values smoothly
 		return float32((1-value1)*0.2 + value1*((1-value2)*1.5+value2*2.0))
 	}
 
-	// otherwise, acceleration is 0
+	// otherwise, driver.Acceleration is 0
 	return 0
 }
 
 func reduceSteering(reduction float32) {
-	if steering > 0 {
-		steering = float32(math.Max(float64(steering-reduction), 0))
+	if driver.Steering > 0 {
+		driver.Steering = float32(math.Max(float64(driver.Steering-reduction), 0))
 	} else {
-		steering = float32(math.Min(float64(steering+reduction), 0))
+		driver.Steering = float32(math.Min(float64(driver.Steering+reduction), 0))
 	}
 }

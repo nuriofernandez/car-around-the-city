@@ -2,6 +2,7 @@ package vehicle
 
 import (
 	rl "github.com/gen2brain/raylib-go/raylib"
+	"github.com/nuriofernandez/car-around-the-city/render/screens/game/driver"
 )
 
 var wheelsRotation = float32(0)
@@ -35,7 +36,7 @@ func driverFront() {
 	var (
 		pitch = float32(-wheelsRotation)
 		roll  = float32(0)
-		yaw   = float32(carYaw + steering) // Max 28
+		yaw   = float32(carYaw + driver.Steering) // Max 28
 	)
 
 	rotation := rl.Vector3{
@@ -67,7 +68,7 @@ func passengerFront() {
 	var (
 		pitch = float32(-wheelsRotation)
 		roll  = float32(-180)
-		yaw   = float32(-carYaw+180) + -steering // Max -28
+		yaw   = float32(-carYaw+180) + -driver.Steering
 	)
 
 	rotation := rl.Vector3{
