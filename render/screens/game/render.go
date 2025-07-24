@@ -10,9 +10,9 @@ import (
 func Render() {
 	Movement()
 	vehicle.PreRender()
-	Elevation()
+	Falling()
 	audio.Loop()
-	
+
 	CameraController()
 
 	rl.BeginDrawing()

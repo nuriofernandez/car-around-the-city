@@ -10,6 +10,7 @@ import (
 func main() {
 	rl.InitWindow(settings.ScreenWidth, settings.ScreenHeight, "Car around the city")
 	defer rl.CloseWindow()
+	rl.DisableBackfaceCulling()
 	rl.SetTraceLogLevel(rl.LogAll)
 
 	icon := rl.LoadImage("resources/icon.png")
