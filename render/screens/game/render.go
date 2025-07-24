@@ -3,6 +3,7 @@ package game
 import (
 	"fmt"
 	rl "github.com/gen2brain/raylib-go/raylib"
+	"github.com/nuriofernandez/car-around-the-city/render/screens/game/audio"
 	"github.com/nuriofernandez/car-around-the-city/render/screens/game/vehicle"
 )
 
@@ -10,6 +11,7 @@ func Render() {
 	Movement()
 	vehicle.PreRender()
 	Elevation()
+	audio.Loop()
 	
 	CameraController()
 
