@@ -1,7 +1,6 @@
 package audio
 
 import (
-	"fmt"
 	rl "github.com/gen2brain/raylib-go/raylib"
 	"github.com/nuriofernandez/car-around-the-city/render/screens/game/driver"
 )
@@ -47,7 +46,6 @@ func Loop() {
 			isAccelerating = true
 			rl.StopSound(decelerate)
 			rl.PlaySound(accelerate)
-			fmt.Println("AC!")
 		} else {
 			if !rl.IsSoundPlaying(accelerate) {
 				rl.UpdateMusicStream(accelerateLoop)
@@ -62,7 +60,6 @@ func Loop() {
 			isDecelerating = true
 			rl.StopSound(accelerate)
 			rl.PlaySound(decelerate)
-			fmt.Println("DC!")
 		}
 		isAccelerating = false
 	}
