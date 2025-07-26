@@ -10,10 +10,10 @@ import (
 type Vehicle struct {
 	Model               VehicleModel
 	Body                entity.Entity
-	passengerFrontWheel entity.Entity
-	passengerBackWheel  entity.Entity
-	driverFrontWheel    entity.Entity
-	driverBackWheel     entity.Entity
+	PassengerFrontWheel entity.Entity
+	PassengerBackWheel  entity.Entity
+	DriverFrontWheel    entity.Entity
+	DriverBackWheel     entity.Entity
 	Steering            float32
 	Acceleration        float32
 	wheelRotation       float32
@@ -21,40 +21,40 @@ type Vehicle struct {
 
 func (v *Vehicle) Update() {
 	// Update wheels position
-	v.passengerFrontWheel.Position = position.NewPositionVector(rl.Vector3Add(v.Body.Position.Location, rotateOffsetY(hardcodedVehicleModel.PassengerFrontWheelOffset, v.Body.Position.Rotation.Yaw)))
-	v.passengerBackWheel.Position = position.NewPositionVector(rl.Vector3Add(v.Body.Position.Location, rotateOffsetY(hardcodedVehicleModel.PassengerBackWheelOffset, v.Body.Position.Rotation.Yaw)))
-	v.driverFrontWheel.Position = position.NewPositionVector(rl.Vector3Add(v.Body.Position.Location, rotateOffsetY(hardcodedVehicleModel.DriverFrontWheelOffset, v.Body.Position.Rotation.Yaw)))
-	v.driverBackWheel.Position = position.NewPositionVector(rl.Vector3Add(v.Body.Position.Location, rotateOffsetY(hardcodedVehicleModel.DriverBackWheelOffset, v.Body.Position.Rotation.Yaw)))
+	v.PassengerFrontWheel.Position = position.NewPositionVector(rl.Vector3Add(v.Body.Position.Location, rotateOffsetY(hardcodedVehicleModel.PassengerFrontWheelOffset, v.Body.Position.Rotation.Yaw)))
+	v.PassengerBackWheel.Position = position.NewPositionVector(rl.Vector3Add(v.Body.Position.Location, rotateOffsetY(hardcodedVehicleModel.PassengerBackWheelOffset, v.Body.Position.Rotation.Yaw)))
+	v.DriverFrontWheel.Position = position.NewPositionVector(rl.Vector3Add(v.Body.Position.Location, rotateOffsetY(hardcodedVehicleModel.DriverFrontWheelOffset, v.Body.Position.Rotation.Yaw)))
+	v.DriverBackWheel.Position = position.NewPositionVector(rl.Vector3Add(v.Body.Position.Location, rotateOffsetY(hardcodedVehicleModel.DriverBackWheelOffset, v.Body.Position.Rotation.Yaw)))
 
 	// Update back wheels rotation
-	v.driverBackWheel.Position.Rotation.Yaw = v.Body.Position.Rotation.Yaw
-	v.passengerBackWheel.Position.Rotation.Yaw = v.Body.Position.Rotation.Yaw - 180
+	v.DriverBackWheel.Position.Rotation.Yaw = v.Body.Position.Rotation.Yaw
+	v.PassengerBackWheel.Position.Rotation.Yaw = v.Body.Position.Rotation.Yaw - 180
 
 	// Update front wheels rotation
-	v.driverFrontWheel.Position.Rotation.Yaw = v.Body.Position.Rotation.Yaw + v.Steering
-	v.passengerFrontWheel.Position.Rotation.Yaw = v.Body.Position.Rotation.Yaw - 180 + v.Steering
+	v.DriverFrontWheel.Position.Rotation.Yaw = v.Body.Position.Rotation.Yaw + v.Steering
+	v.PassengerFrontWheel.Position.Rotation.Yaw = v.Body.Position.Rotation.Yaw - 180 + v.Steering
 
 	// Update wheels speed (pitch)
 	v.wheelRotation = float32(math.Mod(float64(v.wheelRotation+(v.Acceleration*40)), 360.0))
-	v.driverBackWheel.Position.Rotation.Pitch = -v.wheelRotation
-	v.passengerBackWheel.Position.Rotation.Pitch = v.wheelRotation
-	v.driverFrontWheel.Position.Rotation.Pitch = -v.wheelRotation
-	v.passengerFrontWheel.Position.Rotation.Pitch = v.wheelRotation
+	v.DriverBackWheel.Position.Rotation.Pitch = -v.wheelRotation
+	v.PassengerBackWheel.Position.Rotation.Pitch = v.wheelRotation
+	v.DriverFrontWheel.Position.Rotation.Pitch = -v.wheelRotation
+	v.PassengerFrontWheel.Position.Rotation.Pitch = v.wheelRotation
 
 	// Apply transformations
 	transform(&v.Body)
-	transform(&v.driverBackWheel)
-	transform(&v.passengerBackWheel)
-	transform(&v.driverFrontWheel)
-	transform(&v.passengerFrontWheel)
+	transform(&v.DriverBackWheel)
+	transform(&v.PassengerBackWheel)
+	transform(&v.DriverFrontWheel)
+	transform(&v.PassengerFrontWheel)
 }
 
 func (v *Vehicle) Render() {
 	v.Update()
 
 	rl.DrawModel(v.Body.Object, v.Body.Position.Location, 1.0, rl.White)
-	rl.DrawModel(v.passengerFrontWheel.Object, v.passengerFrontWheel.Position.Location, 1.0, rl.White)
-	rl.DrawModel(v.passengerBackWheel.Object, v.passengerBackWheel.Position.Location, 1.0, rl.White)
-	rl.DrawModel(v.driverFrontWheel.Object, v.driverFrontWheel.Position.Location, 1.0, rl.White)
-	rl.DrawModel(v.driverBackWheel.Object, v.driverBackWheel.Position.Location, 1.0, rl.White)
+	rl.DrawModel(v.PassengerFrontWheel.Object, v.PassengerFrontWheel.Position.Location, 1.0, rl.White)
+	rl.DrawModel(v.PassengerBackWheel.Object, v.PassengerBackWheel.Position.Location, 1.0, rl.White)
+	rl.DrawModel(v.DriverFrontWheel.Object, v.DriverFrontWheel.Position.Location, 1.0, rl.White)
+	rl.DrawModel(v.DriverBackWheel.Object, v.DriverBackWheel.Position.Location, 1.0, rl.White)
 }

@@ -16,16 +16,16 @@ func NewVehicle(x, y, z float32) Vehicle {
 			Object:   rl.LoadModel(model.BodyFile),
 			Position: pos,
 		},
-		passengerFrontWheel: entity.Entity{
+		PassengerFrontWheel: entity.Entity{
 			Object: rl.LoadModel(model.WheelFile),
 		},
-		passengerBackWheel: entity.Entity{
+		PassengerBackWheel: entity.Entity{
 			Object: rl.LoadModel(model.WheelFile),
 		},
-		driverFrontWheel: entity.Entity{
+		DriverFrontWheel: entity.Entity{
 			Object: rl.LoadModel(model.WheelFile),
 		},
-		driverBackWheel: entity.Entity{
+		DriverBackWheel: entity.Entity{
 			Object: rl.LoadModel(model.WheelFile),
 		},
 	}

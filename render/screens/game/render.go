@@ -12,6 +12,7 @@ func Render() {
 	vehicle.PreRender()
 	Falling()
 	audio.Loop()
+	CalculatePitch()
 
 	CameraController()
 
