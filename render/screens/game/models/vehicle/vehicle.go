@@ -3,7 +3,6 @@ package vehicle
 import (
 	rl "github.com/gen2brain/raylib-go/raylib"
 	"github.com/nuriofernandez/car-around-the-city/render/screens/game/models/entity"
-	"github.com/nuriofernandez/car-around-the-city/render/screens/game/models/position"
 	"math"
 )
 
@@ -21,10 +20,10 @@ type Vehicle struct {
 
 func (v *Vehicle) Update() {
 	// Update wheels position
-	v.PassengerFrontWheel.Position = position.NewPositionVector(rl.Vector3Add(v.Body.Position.Location, rotateOffsetY(hardcodedVehicleModel.PassengerFrontWheelOffset, v.Body.Position.Rotation.Yaw)))
-	v.PassengerBackWheel.Position = position.NewPositionVector(rl.Vector3Add(v.Body.Position.Location, rotateOffsetY(hardcodedVehicleModel.PassengerBackWheelOffset, v.Body.Position.Rotation.Yaw)))
-	v.DriverFrontWheel.Position = position.NewPositionVector(rl.Vector3Add(v.Body.Position.Location, rotateOffsetY(hardcodedVehicleModel.DriverFrontWheelOffset, v.Body.Position.Rotation.Yaw)))
-	v.DriverBackWheel.Position = position.NewPositionVector(rl.Vector3Add(v.Body.Position.Location, rotateOffsetY(hardcodedVehicleModel.DriverBackWheelOffset, v.Body.Position.Rotation.Yaw)))
+	v.PassengerFrontWheel.Position = v.transformWheel(hardcodedVehicleModel.PassengerFrontWheelOffset)
+	v.PassengerBackWheel.Position = v.transformWheel(hardcodedVehicleModel.PassengerBackWheelOffset)
+	v.DriverFrontWheel.Position = v.transformWheel(hardcodedVehicleModel.DriverFrontWheelOffset)
+	v.DriverBackWheel.Position = v.transformWheel(hardcodedVehicleModel.DriverBackWheelOffset)
 
 	// Update back wheels rotation
 	v.DriverBackWheel.Position.Rotation.Yaw = v.Body.Position.Rotation.Yaw
