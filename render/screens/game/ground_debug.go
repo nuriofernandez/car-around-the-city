@@ -49,7 +49,7 @@ func Hit(location rl.Vector3) float32 {
 	}
 
 	if !bestHit.Hit {
-		return 0
+		return -99
 	}
 
 	return bestHit.Point.Y
