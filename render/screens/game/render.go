@@ -11,6 +11,7 @@ func Render() {
 	Movement()
 	vehicle.PreRender()
 	Falling()
+	CalculateGroundCube()
 	audio.Loop()
 	CalculatePitch()
 
@@ -24,6 +25,7 @@ func Render() {
 	rl.DrawModel(terrainModel, rl.NewVector3(0, 0, 0), 1.0, rl.White)
 
 	vehicle.Render()
+	RenderGroundCube()
 
 	rl.EndMode3D()
 
