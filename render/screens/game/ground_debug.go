@@ -20,10 +20,10 @@ func CalculateGroundCube() {
 }
 
 func RenderGroundCube() {
-	rl.DrawCube(driverFront, 0.2, 0.2, 0.2, rl.Yellow)
-	rl.DrawCube(driverBack, 0.2, 0.2, 0.2, rl.Yellow)
-	rl.DrawCube(passengerFront, 0.2, 0.2, 0.2, rl.Yellow)
-	rl.DrawCube(passengerBack, 0.2, 0.2, 0.2, rl.Yellow)
+	rl.DrawCube(rl.Vector3Add(driverFront, rl.Vector3{Y: 0.1}), 0.2, 0.2, 0.2, rl.Yellow)
+	rl.DrawCube(rl.Vector3Add(driverBack, rl.Vector3{Y: 0.1}), 0.2, 0.2, 0.2, rl.Yellow)
+	rl.DrawCube(rl.Vector3Add(passengerFront, rl.Vector3{Y: 0.1}), 0.2, 0.2, 0.2, rl.Yellow)
+	rl.DrawCube(rl.Vector3Add(passengerBack, rl.Vector3{Y: 0.1}), 0.2, 0.2, 0.2, rl.Yellow)
 }
 
 func HitGround(location rl.Vector3) rl.Vector3 {
