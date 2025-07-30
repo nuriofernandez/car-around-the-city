@@ -4,6 +4,7 @@ import (
 	"fmt"
 	rl "github.com/gen2brain/raylib-go/raylib"
 	"github.com/nuriofernandez/car-around-the-city/render/screens/game/audio"
+	"github.com/nuriofernandez/car-around-the-city/render/screens/game/chat"
 	"github.com/nuriofernandez/car-around-the-city/render/screens/game/vehicle"
 )
 
@@ -34,6 +35,8 @@ func Render() {
 	rl.DrawText(cords, 10, 10, 20, rl.Black)
 
 	rl.DrawText(vehicle.GetDebug(), 10, 40, 25, rl.Blue)
+
+	chat.Render()
 
 	rl.EndDrawing()
 }

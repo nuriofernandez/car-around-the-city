@@ -2,6 +2,7 @@ package game
 
 import (
 	rl "github.com/gen2brain/raylib-go/raylib"
+	"github.com/nuriofernandez/car-around-the-city/render/screens/game/chat"
 	"github.com/nuriofernandez/car-around-the-city/render/screens/game/driver"
 	"github.com/nuriofernandez/car-around-the-city/render/screens/game/vehicle"
 )
@@ -29,6 +30,7 @@ func Movement() {
 
 	// TMP reset altitude
 	if rl.IsKeyDown(rl.KeyR) {
+		chat.Add("Updated vehicle position! (Y = 10)")
 		vehicle.PedVehicle.Body.Position.Location.Y = 10
 	}
 }
