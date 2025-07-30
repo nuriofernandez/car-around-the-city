@@ -7,6 +7,9 @@ func PreRender() {
 
 	PedVehicle.Acceleration = driver.Acceleration
 	PedVehicle.Steering = driver.Steering
+
+	// Update wheels, body rotation, etc
+	PedVehicle.Update()
 }
 
 func Render() {

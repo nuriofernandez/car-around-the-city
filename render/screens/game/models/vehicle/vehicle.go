@@ -49,8 +49,6 @@ func (v *Vehicle) Update() {
 }
 
 func (v *Vehicle) Render() {
-	v.Update()
-
 	rl.DrawModel(v.Body.Object, v.Body.Position.Location, 1.0, rl.White)
 	rl.DrawModel(v.PassengerFrontWheel.Object, v.PassengerFrontWheel.Position.Location, 1.0, rl.White)
 	rl.DrawModel(v.PassengerBackWheel.Object, v.PassengerBackWheel.Position.Location, 1.0, rl.White)
