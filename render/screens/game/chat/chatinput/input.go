@@ -1,7 +1,10 @@
-package chat
+package chatinput
 
-import rl "github.com/gen2brain/raylib-go/raylib"
+import (
+	rl "github.com/gen2brain/raylib-go/raylib"
+)
 
+var ChatOpen = false
 var CurrentCommand = ""
 
 func InputChat() {
@@ -13,7 +16,7 @@ func InputChat() {
 		CurrentCommand = CurrentCommand[:len(CurrentCommand)-1]
 	}
 	if rl.IsKeyPressed(rl.KeyEnter) {
-		Add(CurrentCommand)
+		Process(CurrentCommand)
 		ChatOpen = false
 		CurrentCommand = ""
 	}
