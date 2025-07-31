@@ -11,8 +11,8 @@ import (
 
 func Render() {
 	Movement()
-	vehicle.PreRender()
 	Falling()
+	vehicle.PreRender()
 	CalculateGroundCube()
 	audio.Loop()
 	CalculatePitch()
