@@ -5,6 +5,7 @@ import (
 	rl "github.com/gen2brain/raylib-go/raylib"
 	"github.com/nuriofernandez/car-around-the-city/render/screens/game/audio"
 	"github.com/nuriofernandez/car-around-the-city/render/screens/game/chat/chatrender"
+	"github.com/nuriofernandez/car-around-the-city/render/screens/game/chat/commands/debug"
 	"github.com/nuriofernandez/car-around-the-city/render/screens/game/vehicle"
 	"github.com/nuriofernandez/car-around-the-city/settings"
 )
@@ -13,7 +14,9 @@ func Render() {
 	Movement()
 	Falling()
 	vehicle.PreRender()
-	CalculateGroundCube()
+	if debug.GroundDebugEnabled {
+		PreRenderGroundCube()
+	}
 	audio.Loop()
 	CalculatePitch()
 
@@ -27,8 +30,9 @@ func Render() {
 	rl.DrawModel(terrainModel, rl.NewVector3(0, 0, 0), 1.0, rl.White)
 
 	vehicle.Render()
-	RenderGroundCube()
-
+	if debug.GroundDebugEnabled {
+		RenderGroundCube()
+	}
 	rl.EndMode3D()
 
 	carPosition := vehicle.GetCarPos()
