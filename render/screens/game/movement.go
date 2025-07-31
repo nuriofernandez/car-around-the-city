@@ -8,6 +8,11 @@ import (
 )
 
 func Movement() {
+	// If chat is open, ignore inputs
+	if chat.ChatOpen {
+		return
+	}
+
 	if rl.IsKeyDown(rl.KeyW) {
 		if vehicle.PedVehicle.IsGrounded {
 			driver.Accelerate(0.005)
