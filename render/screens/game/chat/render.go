@@ -11,7 +11,7 @@ func Render() {
 	// Print last 10 chat messages
 	messages := LastMessages()
 	for i := 0; i < 10; i++ {
-		rl.DrawText(messages[i], 10, int32(70+(i*20)), 20, rl.White)
+		rl.DrawText(messages[i], 10, int32(10+(i*20)), 20, rl.White)
 	}
 
 	// If chat is open, print the input text box
@@ -30,11 +30,12 @@ func RenderInputBox() {
 	// Command line
 	rec := rl.Rectangle{
 		X:      10,
-		Y:      270,
+		Y:      210,
 		Width:  float32(settings.ScreenWidth - 200),
 		Height: 30,
 	}
 	rl.DrawRectangleRounded(rec, 0.3, 0, rl.Black)
+
 	// Draw command/message
-	rl.DrawText(CurrentCommand, 15, 275, 20, rl.White)
+	rl.DrawText(CurrentCommand, 15, 215, 20, rl.White)
 }
