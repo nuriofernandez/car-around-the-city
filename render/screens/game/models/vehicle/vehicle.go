@@ -16,6 +16,7 @@ type Vehicle struct {
 	Steering            float32
 	Acceleration        float32
 	wheelRotation       float32
+	IsGrounded          bool
 }
 
 func (v *Vehicle) Update() {

@@ -9,15 +9,21 @@ import (
 
 func Movement() {
 	if rl.IsKeyDown(rl.KeyW) {
-		driver.Accelerate(0.005)
+		if vehicle.PedVehicle.IsGrounded {
+			driver.Accelerate(0.005)
+		}
 	}
 
 	if rl.IsKeyDown(rl.KeyS) {
-		driver.Accelerate(-0.005)
+		if vehicle.PedVehicle.IsGrounded {
+			driver.Accelerate(-0.005)
+		}
 	}
 
 	if rl.IsKeyDown(rl.KeySpace) {
-		driver.Break()
+		if vehicle.PedVehicle.IsGrounded {
+			driver.Break()
+		}
 	}
 
 	if rl.IsKeyDown(rl.KeyA) {
