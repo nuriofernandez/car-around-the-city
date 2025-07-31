@@ -35,7 +35,7 @@ func Movement() {
 	}
 
 	// TMP reset altitude
-	if rl.IsKeyDown(rl.KeyR) {
+	if rl.IsKeyPressed(rl.KeyR) {
 		chat.Add("Updated vehicle position! (Y = 10)")
 		vehicle.PedVehicle.Body.Position.Location.Y = 10
 	}
