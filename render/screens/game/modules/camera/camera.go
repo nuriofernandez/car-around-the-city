@@ -1,4 +1,4 @@
-package game
+package camera
 
 import (
 	rl "github.com/gen2brain/raylib-go/raylib"
@@ -6,7 +6,7 @@ import (
 	"math"
 )
 
-var camera = rl.Camera{
+var Camera = rl.Camera{
 	Position:   rl.NewVector3(vehicle.GetCarPos().X+5, vehicle.GetCarPos().Y+10.0, vehicle.GetCarPos().Z+5.0),
 	Target:     *vehicle.GetCarPos(),
 	Up:         rl.NewVector3(0.0, 1.0, 0.0),
@@ -22,11 +22,6 @@ var (
 	// Distance from the car
 	cameraDistance float32 = 10.0
 )
-
-func CameraController() {
-	HandleCameraRotation()
-	camera.Target = *vehicle.GetCarPos()
-}
 
 func HandleCameraRotation() {
 	// Mouse control
@@ -49,7 +44,7 @@ func HandleCameraRotation() {
 	yaw := rl.Deg2rad * cameraAngleX
 	pitch := rl.Deg2rad * cameraAngleY
 
-	camera.Position.X = vehicle.GetCarPos().X + radius*float32(math.Cos(float64(pitch)))*float32(math.Sin(float64(yaw)))
-	camera.Position.Y = vehicle.GetCarPos().Y + radius*float32(math.Sin(float64(pitch)))
-	camera.Position.Z = vehicle.GetCarPos().Z + radius*float32(math.Cos(float64(pitch)))*float32(math.Cos(float64(yaw)))
+	Camera.Position.X = vehicle.GetCarPos().X + radius*float32(math.Cos(float64(pitch)))*float32(math.Sin(float64(yaw)))
+	Camera.Position.Y = vehicle.GetCarPos().Y + radius*float32(math.Sin(float64(pitch)))
+	Camera.Position.Z = vehicle.GetCarPos().Z + radius*float32(math.Cos(float64(pitch)))*float32(math.Cos(float64(yaw)))
 }

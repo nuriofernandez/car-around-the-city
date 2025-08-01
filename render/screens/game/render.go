@@ -6,6 +6,7 @@ import (
 	"github.com/nuriofernandez/car-around-the-city/render/screens/game/audio"
 	"github.com/nuriofernandez/car-around-the-city/render/screens/game/chat/chatrender"
 	"github.com/nuriofernandez/car-around-the-city/render/screens/game/chat/commands/debug"
+	"github.com/nuriofernandez/car-around-the-city/render/screens/game/modules/camera"
 	"github.com/nuriofernandez/car-around-the-city/render/screens/game/modules/ground_debug"
 	"github.com/nuriofernandez/car-around-the-city/render/screens/game/modules/terrain"
 	"github.com/nuriofernandez/car-around-the-city/render/screens/game/vehicle"
@@ -13,6 +14,7 @@ import (
 )
 
 func Render() {
+	// Pre-render
 	Movement()
 	Falling()
 	vehicle.PreRender()
@@ -21,22 +23,22 @@ func Render() {
 	}
 	audio.Loop()
 	CalculatePitch()
+	camera.PreRender()
 
-	CameraController()
-
+	// 3D Render
 	rl.BeginDrawing()
 	rl.ClearBackground(rl.RayWhite)
-
-	rl.BeginMode3D(camera)
+	camera.BeginMode3D()
 
 	terrain.Render()
-
 	vehicle.Render()
 	if debug.GroundDebugEnabled {
 		ground_debug.RenderGroundCube()
 	}
+
 	rl.EndMode3D()
 
+	// 2D Render
 	carPosition := vehicle.GetCarPos()
 	cords := fmt.Sprintf("[%d,%d,%d]", int(carPosition.X), int(carPosition.Y), int(carPosition.Z))
 	rl.DrawText(cords, settings.ScreenWidth-10-rl.MeasureText(cords, 20), 10, 20, rl.Black)
