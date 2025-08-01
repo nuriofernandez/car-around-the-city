@@ -6,6 +6,7 @@ import (
 	"github.com/nuriofernandez/car-around-the-city/render/screens/game/audio"
 	"github.com/nuriofernandez/car-around-the-city/render/screens/game/chat/chatrender"
 	"github.com/nuriofernandez/car-around-the-city/render/screens/game/chat/commands/debug"
+	"github.com/nuriofernandez/car-around-the-city/render/screens/game/modules/ground_debug"
 	"github.com/nuriofernandez/car-around-the-city/render/screens/game/modules/terrain"
 	"github.com/nuriofernandez/car-around-the-city/render/screens/game/vehicle"
 	"github.com/nuriofernandez/car-around-the-city/settings"
@@ -16,7 +17,7 @@ func Render() {
 	Falling()
 	vehicle.PreRender()
 	if debug.GroundDebugEnabled {
-		PreRenderGroundCube()
+		ground_debug.PreRenderGroundCube()
 	}
 	audio.Loop()
 	CalculatePitch()
@@ -32,7 +33,7 @@ func Render() {
 
 	vehicle.Render()
 	if debug.GroundDebugEnabled {
-		RenderGroundCube()
+		ground_debug.RenderGroundCube()
 	}
 	rl.EndMode3D()
 
