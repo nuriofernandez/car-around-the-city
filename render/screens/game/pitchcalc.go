@@ -1,13 +1,14 @@
 package game
 
 import (
+	"github.com/nuriofernandez/car-around-the-city/render/screens/game/modules/terrain"
 	"github.com/nuriofernandez/car-around-the-city/render/screens/game/vehicle"
 	"math"
 )
 
 func CalculatePitch() {
-	frontWheelPoint := Hit(vehicle.PedVehicle.DriverFrontWheel.Position.Location)
-	backWheelPoint := Hit(vehicle.PedVehicle.DriverBackWheel.Position.Location)
+	frontWheelPoint := terrain.Hit(vehicle.PedVehicle.DriverFrontWheel.Position.Location)
+	backWheelPoint := terrain.Hit(vehicle.PedVehicle.DriverBackWheel.Position.Location)
 	vehicleYaw := vehicle.PedVehicle.Body.Position.Rotation.Yaw
 
 	// Calculate difference in world coordinates

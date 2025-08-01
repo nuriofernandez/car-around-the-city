@@ -6,6 +6,7 @@ import (
 	"github.com/nuriofernandez/car-around-the-city/render/screens/game/audio"
 	"github.com/nuriofernandez/car-around-the-city/render/screens/game/chat/chatrender"
 	"github.com/nuriofernandez/car-around-the-city/render/screens/game/chat/commands/debug"
+	"github.com/nuriofernandez/car-around-the-city/render/screens/game/modules/terrain"
 	"github.com/nuriofernandez/car-around-the-city/render/screens/game/vehicle"
 	"github.com/nuriofernandez/car-around-the-city/settings"
 )
@@ -27,7 +28,7 @@ func Render() {
 
 	rl.BeginMode3D(camera)
 
-	rl.DrawModel(terrainModel, rl.NewVector3(0, 0, 0), 1.0, rl.White)
+	rl.DrawModel(terrain.TerrainModel, rl.NewVector3(0, 0, 0), 1.0, rl.White)
 
 	vehicle.Render()
 	if debug.GroundDebugEnabled {

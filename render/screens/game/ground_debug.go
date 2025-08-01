@@ -2,6 +2,7 @@ package game
 
 import (
 	rl "github.com/gen2brain/raylib-go/raylib"
+	"github.com/nuriofernandez/car-around-the-city/render/screens/game/modules/terrain"
 	"github.com/nuriofernandez/car-around-the-city/render/screens/game/vehicle"
 )
 
@@ -13,10 +14,10 @@ var (
 )
 
 func PreRenderGroundCube() {
-	driverFront = HitGround(vehicle.PedVehicle.DriverFrontWheel.Position.Location)
-	driverBack = HitGround(vehicle.PedVehicle.DriverBackWheel.Position.Location)
-	passengerFront = HitGround(vehicle.PedVehicle.PassengerFrontWheel.Position.Location)
-	passengerBack = HitGround(vehicle.PedVehicle.PassengerBackWheel.Position.Location)
+	driverFront = terrain.HitGround(vehicle.PedVehicle.DriverFrontWheel.Position.Location)
+	driverBack = terrain.HitGround(vehicle.PedVehicle.DriverBackWheel.Position.Location)
+	passengerFront = terrain.HitGround(vehicle.PedVehicle.PassengerFrontWheel.Position.Location)
+	passengerBack = terrain.HitGround(vehicle.PedVehicle.PassengerBackWheel.Position.Location)
 }
 
 func RenderGroundCube() {

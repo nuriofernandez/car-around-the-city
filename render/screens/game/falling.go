@@ -1,13 +1,14 @@
 package game
 
 import (
+	"github.com/nuriofernandez/car-around-the-city/render/screens/game/modules/terrain"
 	"github.com/nuriofernandez/car-around-the-city/render/screens/game/vehicle"
 )
 
 func Falling() {
 	carPosition := vehicle.PedVehicle.Body.Position.Location
 
-	var bestHitY = Hit(carPosition)
+	var bestHitY = terrain.Hit(carPosition)
 
 	minPos := bestHitY + 0.333785 //  car space
 
