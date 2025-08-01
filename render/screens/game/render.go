@@ -29,7 +29,7 @@ func Render() {
 
 	rl.BeginMode3D(camera)
 
-	rl.DrawModel(terrain.TerrainModel, rl.NewVector3(0, 0, 0), 1.0, rl.White)
+	terrain.Render()
 
 	vehicle.Render()
 	if debug.GroundDebugEnabled {
