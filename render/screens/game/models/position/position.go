@@ -1,6 +1,9 @@
 package position
 
-import rl "github.com/gen2brain/raylib-go/raylib"
+import (
+	rl "github.com/gen2brain/raylib-go/raylib"
+	"math"
+)
 
 type Rotation struct {
 	Pitch float32
@@ -27,4 +30,11 @@ func NewPositionVector(vector rl.Vector3) Position {
 	return Position{
 		Location: vector,
 	}
+}
+
+func Distance(a, b rl.Vector3) float32 {
+	dx := b.X - a.X
+	dy := b.Y - a.Y
+	dz := b.Z - a.Z
+	return float32(math.Sqrt(float64(dx*dx + dy*dy + dz*dz)))
 }
