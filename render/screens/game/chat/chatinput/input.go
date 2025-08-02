@@ -8,13 +8,19 @@ var ChatOpen = false
 var CurrentCommand = ""
 
 func InputChat() {
+	// Handle typing
 	char := rl.GetCharPressed()
 	if (char >= 32) && (char <= 125) {
 		CurrentCommand = CurrentCommand + getString(char)
 	}
-	if rl.IsKeyDown(rl.KeyBackspace) && len(CurrentCommand) > 0 {
+
+	// Handle delete
+	var backspacePressed = rl.IsKeyPressedRepeat(rl.KeyBackspace) || rl.IsKeyPressed(rl.KeyBackspace)
+	if backspacePressed && len(CurrentCommand) > 0 {
 		CurrentCommand = CurrentCommand[:len(CurrentCommand)-1]
 	}
+
+	// Handle send
 	if rl.IsKeyPressed(rl.KeyEnter) {
 		Process(CurrentCommand)
 		ChatOpen = false
