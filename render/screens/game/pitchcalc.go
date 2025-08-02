@@ -7,8 +7,8 @@ import (
 )
 
 func CalculatePitch() {
-	frontWheelPoint := terrain.Hit(vehicle.PedVehicle.DriverFrontWheel.Position.Location)
-	backWheelPoint := terrain.Hit(vehicle.PedVehicle.DriverBackWheel.Position.Location)
+	frontWheelPoint := terrain.HitGround(vehicle.PedVehicle.DriverFrontWheel.Position.Location).Y
+	backWheelPoint := terrain.HitGround(vehicle.PedVehicle.DriverBackWheel.Position.Location).Y
 	vehicleYaw := vehicle.PedVehicle.Body.Position.Rotation.Yaw
 
 	// Calculate difference in world coordinates

@@ -8,7 +8,7 @@ import (
 func Falling() {
 	carPosition := vehicle.PedVehicle.Body.Position.Location
 
-	var bestHitY = terrain.Hit(carPosition)
+	var bestHitY = terrain.HitGround(carPosition).Y
 
 	minPos := bestHitY + 0.333785 //  car space
 
