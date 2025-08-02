@@ -3,6 +3,7 @@ package game
 import (
 	rl "github.com/gen2brain/raylib-go/raylib"
 	"github.com/nuriofernandez/car-around-the-city/render/screens/game/audio"
+	"github.com/nuriofernandez/car-around-the-city/render/screens/game/modules/ground_debug"
 	"github.com/nuriofernandez/car-around-the-city/render/screens/game/modules/terrain"
 	"github.com/nuriofernandez/car-around-the-city/render/screens/game/vehicle"
 )
@@ -12,6 +13,7 @@ func Load() {
 	vehicle.Load()
 	rl.DisableCursor()
 	audio.Load()
+	ground_debug.Load()
 }
 
 func UnLoad() {
