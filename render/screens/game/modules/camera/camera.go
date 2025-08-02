@@ -2,6 +2,7 @@ package camera
 
 import (
 	rl "github.com/gen2brain/raylib-go/raylib"
+	"github.com/nuriofernandez/car-around-the-city/render/screens/game/modules/terrain"
 	"github.com/nuriofernandez/car-around-the-city/render/screens/game/vehicle"
 	"math"
 )
@@ -35,8 +36,9 @@ func HandleCameraRotation() {
 	if cameraAngleY > 89.0 {
 		cameraAngleY = 89.0
 	}
-	if cameraAngleY < -89.0 {
-		cameraAngleY = -89.0
+	// Prevent camera from going underground
+	if cameraAngleY < 0 {
+		cameraAngleY = 0
 	}
 
 	// Convert spherical coordinates to Cartesian
@@ -47,4 +49,11 @@ func HandleCameraRotation() {
 	Camera.Position.X = vehicle.GetCarPos().X + radius*float32(math.Cos(float64(pitch)))*float32(math.Sin(float64(yaw)))
 	Camera.Position.Y = vehicle.GetCarPos().Y + radius*float32(math.Sin(float64(pitch)))
 	Camera.Position.Z = vehicle.GetCarPos().Z + radius*float32(math.Cos(float64(pitch)))*float32(math.Cos(float64(yaw)))
+
+	// Prevent camera from going underground during ramps
+	cameraGround := terrain.HitGround(rl.Vector3Add(Camera.Position, rl.Vector3{Y: 3}))
+	minY := cameraGround.Y + 0.5
+	if Camera.Position.Y < minY {
+		Camera.Position.Y = minY
+	}
 }
