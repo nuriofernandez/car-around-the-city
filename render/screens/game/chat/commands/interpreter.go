@@ -3,6 +3,7 @@ package commands
 import (
 	"github.com/nuriofernandez/car-around-the-city/render/screens/game/chat/commands/debug"
 	"github.com/nuriofernandez/car-around-the-city/render/screens/game/chat/commands/notfound"
+	teleport "github.com/nuriofernandez/car-around-the-city/render/screens/game/chat/commands/tp"
 	"strings"
 )
 
@@ -13,6 +14,9 @@ func IsCommand(message string) bool {
 func GetExecutor(command string) func(command string, args []string) {
 	if command == "debug" {
 		return debug.EnableDebug
+	}
+	if command == "tp" {
+		return teleport.Teleport
 	}
 
 	return notfound.Execute
