@@ -20,19 +20,19 @@ var loadingAnim = loading.LoadingAnimation{
 
 func Render() {
 	// Control state based on time
-	if state == 0 { // State 0: Small box blinking
-		if time.Now().After(start.Add(time.Second * 3)) {
+	if state == 0 { // Preload
+		if time.Now().After(start.Add(time.Second * 2)) {
 			start = time.Now()
 			state = 1
 		}
-	} else if state == 2 { // State 2: Bottom and right bars growing
-		if time.Now().After(start.Add(time.Second * 3)) {
+	} else if state == 2 { // Actual load
+		if time.Now().After(start.Add(time.Second * 2)) {
 			start = time.Now()
 			loadingAnim.Loading = false
 			state = 3
 		}
-	} else if state == 3 { // State 3: Letters appearing (one by one)
-		if time.Now().After(start.Add(time.Second * 6)) {
+	} else if state == 3 { // Post load
+		if time.Now().After(start.Add(time.Second * 2)) {
 			start = time.Now()
 			state = 4
 		}
@@ -59,7 +59,7 @@ func Render() {
 
 	if state == 3 {
 		milliseconds := time.Now().Sub(start).Milliseconds()
-		alpha := float32(milliseconds) / 3000
+		alpha := float32(milliseconds) / 2000
 
 		text := "Car around the city"
 		rl.DrawText(text, 20, 20, 50, rl.Fade(rl.Black, alpha))
